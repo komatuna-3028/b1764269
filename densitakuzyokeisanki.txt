@@ -25,7 +25,7 @@ public class DentakuFrame extends JFrame {
 	public DentakuFrame() {
 		contentPane.setLayout(borderLayout1);
 		this.setSize(new Dimension(400, 480));
-		this.setTitle("“dŽqŽ®‘ìãŒvŽZ‹@");
+		this.setTitle("電子卓上計算機");
 		this.setContentPane(contentPane);
 
 		contentPane.add(result, BorderLayout.NORTH);
@@ -37,19 +37,19 @@ public class DentakuFrame extends JFrame {
 		keyPanel.add(new NumberButton("7"), 0); 
 		keyPanel.add(new NumberButton("8"), 1);
 		keyPanel.add(new NumberButton("9"), 2);
-		keyPanel.add(new CalcButton("€"), 3);
+		keyPanel.add(new CalcButton("÷"), 3);
 		keyPanel.add(new NumberButton("4"), 4);
 		keyPanel.add(new NumberButton("5"), 5);
 		keyPanel.add(new NumberButton("6"), 6);
-		keyPanel.add(new CalcButton("~"), 7);
+		keyPanel.add(new CalcButton("×"), 7);
 		keyPanel.add(new NumberButton("1"), 8);
 		keyPanel.add(new NumberButton("2"), 9);
 		keyPanel.add(new NumberButton("3"), 10);
-		keyPanel.add(new CalcButton("|"), 11);
+		keyPanel.add(new CalcButton("－"), 11);
 		keyPanel.add(new NumberButton("0"), 12);
 		keyPanel.add(new NumberButton("."), 13);
-		keyPanel.add(new CalcButton("{"), 14);
-		keyPanel.add(new CalcButton(""), 15);
+		keyPanel.add(new CalcButton("＋"), 14);
+		keyPanel.add(new CalcButton("＝"), 15);
 
 		contentPane.add(new ClearButton(), BorderLayout.SOUTH);
 		this.setVisible(true);
@@ -89,20 +89,20 @@ public class DentakuFrame extends JFrame {
 			if (isStacked) { 
 				double resultValue = (Double.valueOf(result.getText()))
 						.doubleValue();
-				if (currentOp.equals("{")) 
+				if (currentOp.equals("＋")) 
 					stackedValue += resultValue;
-				else if (currentOp.equals("|"))
+				else if (currentOp.equals("－"))
 					stackedValue -= resultValue;
-				else if (currentOp.equals("~"))
+				else if (currentOp.equals("×"))
 					stackedValue *= resultValue;
-				else if (currentOp.equals("€"))
+				else if (currentOp.equals("÷"))
 					stackedValue /= resultValue;
 				result.setText(String.valueOf(stackedValue)); 
 			}
 			currentOp = this.getText(); 
 			stackedValue = (Double.valueOf(result.getText())).doubleValue();
 			afterCalc = true;
-			if (currentOp.equals(""))
+			if (currentOp.equals("＝"))
 				isStacked = false;
 			else
 				isStacked = true;
